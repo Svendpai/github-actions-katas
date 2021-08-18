@@ -66,4 +66,4 @@ jobs:
           name: code
           path: .
       - name: Component test
-        run: bash ci/component-test.sh && export GIT_COMMIT="GA-$GITHUB_SHA"
+        run: bash ci/component-test.sh

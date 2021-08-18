@@ -8,4 +8,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: my-step
         run: chmod +x ci/build-app.sh
-      - run: chmod +x ci/unit-test-app.sh
+      - name: my-step2
+        run: chmod +x ci/unit-test-app.sh

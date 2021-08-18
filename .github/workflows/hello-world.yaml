@@ -6,7 +6,7 @@ jobs:
     container: gradle:6-jdk11
     steps:
       - uses: actions/checkout@v2
-      - name: build app
+      - name: Build app
         run: chmod +x ci/build-app.sh
-      - name: run unit test
+      - name: Run unit test
         run: chmod +x ci/unit-test-app.sh

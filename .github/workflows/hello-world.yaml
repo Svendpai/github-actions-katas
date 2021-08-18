@@ -14,6 +14,11 @@ jobs:
         with:
           name: code
           path: .
+      - name: Upload Shell Scripts
+        uses: actions/upload-artifact@v2
+        with:
+          name: scripts
+          path: ./ci/
   Test:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
@@ -52,13 +57,17 @@ jobs:
         with:
           username: ${{ env.docker_username }}
           password: ${{ env.docker_password }}
+      - name: Download Shell Scripts
+        uses: actions/download-artifact@v2
+        with:
+          name: scripts
+          path: .
       - name: Download Build
         uses: actions/download-artifact@v2
         with:
           name: build
           path: .
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: ${{ env.docker_username }}/my-image:latest
+      - name: Build Docker
+        run: export GIT_COMMIT="GA-$GITHUB_SHA" && bash ci/build-docker.sh
+      - name: Push to DockerHub
+        run: export GIT_COMMIT="GA-$GITHUB_SHA" && bash ci/push-docker.sh

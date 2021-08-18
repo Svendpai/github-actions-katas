@@ -22,7 +22,7 @@ jobs:
           name: code
           path: .
       - name: Run unit test
-        run: chmod +x ci/unit-test-app.sh
+        run: bash ci/unit-test-app.sh
   Build:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
@@ -34,4 +34,4 @@ jobs:
           name: code
           path: .
       - name: Build app
-        run: chmod +x ci/build-app.sh
+        run: bash ci/build-app.sh

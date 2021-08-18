@@ -37,7 +37,7 @@ jobs:
           name: code
           path: .
       - name: Build app
-        run: chmod +x ci/build-app.sh && ci/unit-test-app.sh
+        run: bash ci/unit-test-app.sh
       - name: Upload Build
         uses: actions/upload-artifact@v2
         with:

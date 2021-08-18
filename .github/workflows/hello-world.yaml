@@ -10,8 +10,8 @@ jobs:
         run: chmod +x ci/build-app.sh
       - name: Run unit test
         run: chmod +x ci/unit-test-app.sh
-      - name: Upload a Build Artifact
+      - name: Upload Build Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: my-artifact
+          name: code
           path: .
